@@ -1,0 +1,100 @@
+.navigation-bar {
+  display: flex;
+  align-items: flex-start;
+  width: 56px;
+  height: 100%;
+  flex-shrink: 0;
+}
+
+.shell-navigation {
+  display: flex;
+  height: 100%;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.expanded {
+  background-color: #f8f8f8;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex: 1;
+  height: 100%;
+  align-items: flex-start;
+  min-height: 0;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.menu-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+  align-items: flex-start;
+  min-height: 0;
+  min-width: 0;
+  overflow: hidden;
+  padding: 12px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.nav-item {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  width: 100%;
+}
+
+.nav-button {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  color: #292929;
+  flex-shrink: 0;
+  transition: background-color 0.2s ease;
+}
+
+.nav-button:hover {
+  background-color: rgba(0, 0, 0, 0.06);
+}
+
+.nav-button.selected {
+  background-color: #292929;
+  color: white;
+}
+
+.nav-button.selected:hover {
+  background-color: #1a1a1a;
+}
+
+.nav-button svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.library-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background-color: #eb1000;
+  color: white;
+  font-family: 'Adobe Clean', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+  padding: 2px 5px;
+  border-radius: 10px;
+  min-width: 16px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
