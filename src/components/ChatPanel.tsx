@@ -213,23 +213,28 @@ export default function ChatPanel({ onGenerateContent, selectedCountries, select
   const detectPromptIntent = (prompt: string): 'question' | 'instruction' => {
     const lowerPrompt = prompt.toLowerCase().trim();
     
-    // Question indicators
-    const questionWords = ['what', 'which', 'who', 'where', 'when', 'why', 'how', 'can you explain', 'tell me', 'is this', 'does this', 'would this', 'should i', 'could you', 'do you think'];
+    // Strong content generation indicators (must be clear intent to generate content)
+    const contentGenerationWords = ['create', 'generate', 'write', 'compose', 'draft', 'make a', 'make an', 'create a', 'create an', 'write a', 'write an', 'generate a', 'generate an'];
+    const contentModificationWords = ['change', 'update', 'modify', 'add', 'remove', 'replace', 'rewrite', 'shorten', 'lengthen', 'improve', 'enhance', 'focus on', 'emphasize', 'make it', 'make this', 'more', 'less', 'include', 'exclude'];
+    
+    // Question indicators (conversational, analytical, help requests)
+    const questionWords = ['what', 'which', 'who', 'where', 'when', 'why', 'how', 'can you explain', 'tell me', 'is this', 'does this', 'would this', 'should i', 'could you', 'do you think', 'help', 'hi', 'hello', 'hey', 'thanks', 'thank you'];
     const questionMarks = lowerPrompt.includes('?');
     
-    // Instruction indicators
-    const instructionWords = ['make', 'change', 'update', 'modify', 'add', 'remove', 'replace', 'rewrite', 'shorten', 'lengthen', 'improve', 'enhance', 'focus on', 'emphasize', 'tone', 'more', 'less', 'include', 'exclude'];
-    
-    // Check for questions
+    // Check for questions first
     if (questionMarks) return 'question';
     if (questionWords.some(word => lowerPrompt.startsWith(word))) return 'question';
     
-    // Check for instructions
-    if (instructionWords.some(word => lowerPrompt.includes(word))) return 'instruction';
+    // Only treat as instruction if there's clear intent
+    if (contentGenerationWords.some(word => lowerPrompt.includes(word))) return 'instruction';
+    if (contentModificationWords.some(word => lowerPrompt.includes(word))) {
+      // Only treat as instruction if it's modifying existing content (not first message)
+      const isFirstMessage = messages.filter(m => m.type === 'user').length === 0;
+      return isFirstMessage ? 'question' : 'instruction';
+    }
     
-    // Default to instruction for first message, question for follow-ups without clear intent
-    const isFirstMessage = messages.filter(m => m.type === 'user').length === 0;
-    return isFirstMessage ? 'instruction' : 'question';
+    // Default to question (safer default - won't accidentally generate content)
+    return 'question';
   };
 
   // Function to call ChatGPT for analytical questions
