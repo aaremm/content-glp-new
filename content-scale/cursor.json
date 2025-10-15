@@ -1,0 +1,57 @@
+{
+  "version": "1.0.0",
+  "project": {
+    "name": "content-scale",
+    "description": "Organized content scaling assets",
+    "type": "asset-library"
+  },
+  "directories": {
+    "src": {
+      "path": "./src",
+      "description": "Source files and scripts"
+    },
+    "assets": {
+      "path": "./assets",
+      "description": "Content-specific media assets",
+      "subdirectories": {
+        "blog": "Blog post images and media",
+        "reels": "Instagram Reels and short-form video",
+        "stories": "Social media stories (9:16 format)",
+        "articles": "Article and editorial content",
+        "global": "Shared assets across all content types"
+      }
+    }
+  },
+  "assetTypes": {
+    "blog": {
+      "formats": ["jpg", "png", "webp"],
+      "dimensions": "800x500 or larger",
+      "use": "Blog post inline images and headers"
+    },
+    "reels": {
+      "formats": ["mp4", "mov", "jpg", "png"],
+      "dimensions": "1080x1920 (9:16)",
+      "use": "Instagram Reels, TikTok, short-form video"
+    },
+    "stories": {
+      "formats": ["jpg", "png", "mp4"],
+      "dimensions": "1080x1920 (9:16)",
+      "use": "Instagram Stories, Facebook Stories"
+    },
+    "articles": {
+      "formats": ["jpg", "png", "webp"],
+      "dimensions": "1200x630 or larger",
+      "use": "Long-form editorial content"
+    },
+    "global": {
+      "formats": ["svg", "png", "jpg"],
+      "dimensions": "Various",
+      "use": "Logos, brand elements, backgrounds"
+    }
+  }
+}
+
+
+
+
+

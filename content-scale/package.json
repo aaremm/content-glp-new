@@ -1,0 +1,27 @@
+{
+  "name": "content-scale",
+  "version": "1.0.0",
+  "description": "Content scaling assets and resources",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "content",
+    "assets",
+    "media",
+    "blog",
+    "social"
+  ],
+  "author": "",
+  "license": "ISC",
+  "directories": {
+    "src": "./src",
+    "assets": "./assets"
+  }
+}
+
+
+
+
+
